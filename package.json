@@ -1,0 +1,47 @@
+{
+  "name": "blocace",
+  "version": "0.0.1",
+  "description": "a JS client to access Blocace server",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codingpeasant/blocace-js"
+  },
+  "keywords": [
+    "blocace",
+    "blockchain",
+    "database",
+    "nosql",
+    "bitcoin",
+    "ethereum"
+  ],
+  "author": "codingpeasant <zhaofanzf@gmail.com>",
+  "contributors": [
+    {
+      "name": "Fan Zhao",
+      "email": "zhaofanzf@gmail.com",
+      "url": "https://github.com/codingpeasant"
+    }
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/codingpeasant/blocace/issues"
+  },
+  "homepage": "https://github.com/codingpeasant/blocace",
+  "files": [
+    "index.js",
+    "README.*",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "webpack"
+  },
+  "dependencies": {
+    "crypto-js": "^3.1.9-1",
+    "ethers": "^4.0.43",
+    "axios": "^0.19.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
+}
