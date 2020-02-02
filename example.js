@@ -103,7 +103,7 @@ async function start() {
     console.log('JWT (admin): ' + jwt + '\n')
 
     // register a new user account
-    const accountRes = await blocace.createAccount(accountPayload)
+    const accountRes = await Blocace.createAccount(accountPayload, 'http', 'localhost', '6899')
     console.log('Address of new account: ' + accountRes.data.address + '\n')
 
     // get account

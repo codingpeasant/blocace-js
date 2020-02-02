@@ -40,7 +40,7 @@ class Blocace {
       })
 
       // salt, iv will be hex 32 in length
-      // append them to the ciphertext for use  in decryption
+      // append them to the ciphertext for use in decryption
       var transitMessage = salt.toString() + iv.toString() + encrypted.toString()
       return transitMessage
     } catch (exception) {
@@ -75,13 +75,12 @@ class Blocace {
     return ethers.utils.recoverAddress(ethers.utils.keccak256(Buffer.from(rawDocument)), '0x' + signature + '00') == address
   }
 
-  async createAccount(accountPayload) {
+  static async createAccount(accountPayload, protocol, hostname, port) {
     // accountPayload.publicKey = this.wallet.getPublicKey().toString('hex')
     const accountRes = await axios.request({
-      url: this.protocol + '://' + this.hostname + ':' + this.port + '/account',
+      url: protocol + '://' + hostname + ':' + port + '/account',
       method: 'post',
       timeout: httpRequestTimeout,
-      headers: { 'Authorization': 'Bearer ' + this.token },
       data: accountPayload
     })
 
