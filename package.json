@@ -1,6 +1,6 @@
 {
   "name": "blocace",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "a JS client to access Blocace server",
   "main": "index.js",
   "repository": {
