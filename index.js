@@ -7,14 +7,14 @@ const keySize = 256
 const iterations = 100
 
 class Blocace {
-  constructor(wallet, hostname, port, protocol) {
+  constructor(wallet, protocol, hostname, port) {
     this.wallet = wallet
     this.hostname = hostname || 'localhost'
     this.port = port || 6899
     this.protocol = protocol || 'http'
   }
 
-  static create(hostname, port, protocol) {
+  static create(protocol, hostname, port) {
     return new this(new ethers.Wallet.createRandom(), hostname, port, protocol)
   }
 
