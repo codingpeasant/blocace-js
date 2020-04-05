@@ -15,7 +15,7 @@ class Blocace {
   }
 
   static create(protocol, hostname, port) {
-    return new this(new ethers.Wallet.createRandom(), hostname, port, protocol)
+    return new this(new ethers.Wallet.createRandom(), protocol, hostname, port)
   }
 
   static createFromPrivateKey(privKey, protocol, hostname, port) {

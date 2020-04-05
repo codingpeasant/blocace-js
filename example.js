@@ -140,9 +140,9 @@ async function start() {
     }
 
     // wait for block to be generated
-    await timeout(2000)
     console.log('Waiting for the document to be included in a block... \n')
-
+    await timeout(2000)
+    
     // query the blockchain
     const queryRes = await blocaceUser.query(queryPayload, 'new1')
     console.log('Query result: ' + JSON.stringify(queryRes) + '\n')
