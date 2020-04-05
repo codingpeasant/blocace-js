@@ -2,13 +2,13 @@
 The official Javascript client to access Blocace server.
 
 ## Blocace web API reference
-`static create(hostname, port, protocol)` - Generate random Blocace client key pair and initialize the client class
+`static create(protocol, hostname, port)` - Generate random Blocace client key pair and initialize the client class
 
 Example:
 ```
-var blocace = Blocace.create('localhost', '6899', 'http)
+var blocace = Blocace.create('http', 'localhost', '6899')
 ```
-`static createFromPrivateKey(privKey, hostname, port, protocol)` - Use an existing client private key and initialize the client class
+`static createFromPrivateKey(privKey, protocol, hostname, port)` - Use an existing client private key and initialize the client class
 
 Example:
 ```

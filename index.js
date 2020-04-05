@@ -18,8 +18,8 @@ class Blocace {
     return new this(new ethers.Wallet.createRandom(), hostname, port, protocol)
   }
 
-  static createFromPrivateKey(privKey, hostname, port, protocol) {
-    return new this(new ethers.Wallet(privKey), hostname, port, protocol)
+  static createFromPrivateKey(privKey, protocol, hostname, port) {
+    return new this(new ethers.Wallet(privKey), protocol, hostname, port)
   }
 
   encryptPrivateKey(pass) {

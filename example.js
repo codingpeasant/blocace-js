@@ -26,7 +26,7 @@ const accountPayload = {
   'dateOfBirth': '2018-10-01',
   'firstName': 'Hooper',
   'lastName': 'Vincent',
-  'company': 'MITROC',
+  'organization': 'MITROC',
   'position': 'VP of Marketing',
   'email': 'hoopervincent@mitroc.com',
   'phone': '+1 (849) 503-2756',
