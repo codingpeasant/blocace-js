@@ -72,7 +72,14 @@ class Blocace {
   }
 
   static verifySignature(rawDocument, signature, address) {
-    return ethers.utils.recoverAddress(ethers.utils.keccak256(Buffer.from(rawDocument)), '0x' + signature + '00') == address
+    const docDigest = ethers.utils.keccak256(Buffer.from(rawDocument))
+    // for recoveryParam == 0 or 1
+    return ethers.utils.recoverAddress(docDigest, '0x' + signature + '00') == address ||
+      ethers.utils.recoverAddress(docDigest, '0x' + signature + '01') == address
+  }
+
+  getPublicKey() {
+    return ethers.utils.computePublicKey(this.wallet.privateKey).substring(4)
   }
 
   static async createAccount(accountPayload, protocol, hostname, port) {

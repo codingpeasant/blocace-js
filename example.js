@@ -124,6 +124,7 @@ async function start() {
 
     // initialize the new user account
     var blocaceUser = Blocace.createFromPrivateKey('277d271593d205c6078964c31fb393303efd76d5297906f60d2a7a7d7d12c99a')
+    
     // get JWT for the user account
     const jwtUser = await blocaceUser.getJWT()
     console.log('JWT (new user): ' + jwtUser + '\n')
@@ -170,7 +171,7 @@ async function start() {
     const collectionRes = await blocace.getCollection('new1')
     console.log('Collection new1 data schema: ' + JSON.stringify(collectionRes) + '\n')
   } catch (err) {
-    console.error(err.response.data)
+    console.error(err.response)
   }
 }
 

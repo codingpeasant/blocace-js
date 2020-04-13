@@ -36,6 +36,13 @@ Example:
 var isValidSignature = Blocace.verifySignature(queryRes.hits[0]._source, queryRes.hits[0]._signature, blocaceUser.wallet.address)
 ```
 
+`getPublicKey()` - Get public key of the wallet
+
+Example:
+```
+var publicKey = blocace.getPublicKey()
+```
+
 `async createAccount(accountPayload)` - Create a new account
 
 Example:
