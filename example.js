@@ -149,14 +149,14 @@ async function start() {
     console.log('Query result: ' + JSON.stringify(queryRes) + '\n')
 
     // verify if the transaction is included in the block (by block merkle tree rebuild)
-    const verificationPassed = await blocaceUser.verifyTransaction(queryRes.hits[0]._blockId, queryRes.hits[0]._id)
+    const verificationPassed = await blocaceUser.verifyTransaction(queryRes.hits[0]._blockchainId, queryRes.hits[0]._blockId, queryRes.hits[0]._id)
     console.log('Document included in the block: ' + verificationPassed + '\n')
 
     // verify signature
     console.log('The document\'s integrity check passed: ' + Blocace.verifySignature(queryRes.hits[0]._source, queryRes.hits[0]._signature, blocaceUser.wallet.address) + '\n')
 
     // get block information
-    const blockRes = await blocace.getBlockInfo(queryRes.hits[0]._blockId)
+    const blockRes = await blocace.getBlockInfo(queryRes.hits[0]._blockchainId, queryRes.hits[0]._blockId)
     console.log('Block information: ' + JSON.stringify(blockRes) + '\n')
 
     // get blockchain information

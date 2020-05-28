@@ -19,7 +19,7 @@ class Blocace {
   }
 
   static createFromPrivateKey(privKey, protocol, hostname, port) {
-    return new this(new ethers.Wallet(privKey), protocol, hostname, port)
+    return new this(new ethers.Wallet('0x' + privKey), protocol, hostname, port)
   }
 
   encryptPrivateKey(pass) {
@@ -130,6 +130,7 @@ class Blocace {
 
     const jwt = await axios.post(this.protocol + '://' + this.hostname + ':' + this.port + '/jwt', {
       'address': this.wallet.address,
+      'challengeWord': challengeResponse.data.challenge,
       'signature': sig.r.substring(2) + sig.s.substring(2)
     })
 
@@ -203,9 +204,9 @@ class Blocace {
     return queryRes.data
   }
 
-  async verifyTransaction(blockId, transationId) {
+  async verifyTransaction(blockchainId, blockId, transactionId) {
     const verificationPathRes = await axios.request({
-      url: this.protocol + '://' + this.hostname + ':' + this.port + '/verification/' + blockId + '/' + transationId,
+      url: this.protocol + '://' + this.hostname + ':' + this.port + '/verification/' + blockchainId + '/' + blockId + '/' + transactionId,
       method: 'get',
       timeout: httpRequestTimeout,
       headers: { 'Authorization': 'Bearer ' + this.token }
@@ -213,7 +214,7 @@ class Blocace {
 
     const verificationPath = verificationPathRes.data.verificationPath
     var keys = Object.keys(verificationPath)
-    var hashData = Buffer.from(transationId, 'hex')
+    var hashData = Buffer.from(transactionId, 'hex')
 
     for (let i = keys.length - 1; i > 0; i--) {
       var secondHash = Buffer.from(verificationPath[keys[i]], 'hex')
@@ -229,9 +230,9 @@ class Blocace {
     return hashData.equals(Buffer.from(verificationPath['0'], 'hex'))
   }
 
-  async getBlockInfo(blockId) {
+  async getBlockInfo(blockchainId, blockId) {
     const blockInfoRes = await axios.request({
-      url: this.protocol + '://' + this.hostname + ':' + this.port + '/block/' + blockId,
+      url: this.protocol + '://' + this.hostname + ':' + this.port + '/block/' + blockchainId + '/' + blockId,
       method: 'get',
       timeout: httpRequestTimeout,
       headers: { 'Authorization': 'Bearer ' + this.token }
@@ -249,6 +250,17 @@ class Blocace {
     })
 
     return blockchainRes.data
+  }
+
+  async getPeers() {
+    const peersRes = await axios.request({
+      url: this.protocol + '://' + this.hostname + ':' + this.port + '/peers',
+      method: 'get',
+      timeout: httpRequestTimeout,
+      headers: { 'Authorization': 'Bearer ' + this.token }
+    })
+
+    return peersRes.data
   }
 
   async getCollections() {
