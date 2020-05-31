@@ -170,6 +170,10 @@ async function start() {
     // get collection data schema
     const collectionRes = await blocace.getCollection('new1')
     console.log('Collection new1 data schema: ' + JSON.stringify(collectionRes) + '\n')
+
+    // get peer nodes of a given node
+    const peerRes = await blocace.getPeers()
+    console.log('Peers of ' + queryRes.hits[0]._blockchainId + ': ' + JSON.stringify(peerRes) + '\n')
   } catch (err) {
     console.error(err.response)
   }
